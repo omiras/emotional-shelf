@@ -22,168 +22,155 @@ Ejecuta el siguiente código en un cliente de MongoDB para crear una base de dat
 ```
 db.books.insertMany([
   {
-    title: "The Power of Now",
-    isbn: "9781577314806",
-    photoUrl: "https://example.com/photo1.jpg",
-    price: 15.99,
-    description: "A practical guide for spiritual enlightenment.",
-    emotions: ["Inspiration", "Happiness"]
-  },
-  {
-    title: "The Great Gatsby",
-    isbn: "9780743273565",
-    photoUrl: "https://example.com/photo2.jpg",
-    price: 12.99,
-    description: "A portrait of life in America during the 1920s.",
-    emotions: ["Nostalgia", "Sadness"]
-  },
-  {
     title: "The Alchemist",
-    isbn: "9780062315007",
-    photoUrl: "https://example.com/photo3.jpg",
+    isbn: "9780061122415",
     price: 10.99,
-    description: "A journey toward self-discovery and following dreams.",
-    emotions: ["Inspiration", "Happiness"]
-  },
-  {
-    title: "1984",
-    isbn: "9780451524935",
-    photoUrl: "https://example.com/photo4.jpg",
-    price: 14.99,
-    description: "A critique of surveillance and oppression in a totalitarian society.",
-    emotions: ["Curiosity", "Escapism"]
+    description: "A shepherd's journey to discover his personal legend.",
+    emotions: ["Inspiration", "Escapism"]
   },
   {
     title: "Pride and Prejudice",
     isbn: "9780141439518",
-    photoUrl: "https://example.com/photo5.jpg",
     price: 9.99,
-    description: "A novel about love and social prejudice.",
+    description: "A classic tale of love and social standing.",
     emotions: ["Happiness", "Nostalgia"]
   },
   {
-    title: "The Shadow of the Wind",
-    isbn: "9788408205102",
-    photoUrl: "https://example.com/photo6.jpg",
-    price: 18.99,
-    description: "A mystery set in post-war Barcelona.",
-    emotions: ["Curiosity", "Escapism"]
+    title: "The Great Gatsby",
+    isbn: "9780743273565",
+    price: 11.99,
+    description: "A portrayal of the American dream and its disillusionment.",
+    emotions: ["Nostalgia", "Sadness"]
+  },
+  {
+    title: "1984",
+    isbn: "9780451524935",
+    price: 14.99,
+    description: "A dystopian novel about totalitarianism and surveillance.",
+    emotions: ["Curiosity", "Sadness"]
   },
   {
     title: "The Book Thief",
-    isbn: "9780385754532",
-    photoUrl: "https://example.com/photo7.jpg",
-    price: 13.99,
-    description: "A story of a young girl in Nazi Germany who finds solace in stealing books.",
-    emotions: ["Sadness", "Happiness"]
-  },
-  {
-    title: "Brave New World",
-    isbn: "9780060850520",
-    photoUrl: "https://example.com/photo8.jpg",
-    price: 11.99,
-    description: "A dystopian novel exploring a technologically advanced society.",
-    emotions: ["Curiosity", "Escapism"]
-  },
-  {
-    title: "The House of the Spirits",
-    isbn: "9780552772937",
-    photoUrl: "https://example.com/photo9.jpg",
-    price: 16.99,
-    description: "A family saga that blends realism and supernatural elements.",
-    emotions: ["Nostalgia", "Inspiration"]
-  },
-  {
-    title: "The Diary of Anne Frank",
-    isbn: "9780552776577",
-    photoUrl: "https://example.com/photo10.jpg",
-    price: 10.99,
-    description: "The diary of a Jewish girl during the Nazi occupation.",
-    emotions: ["Sadness", "Reflection"]
-  },
-  {
-    title: "The Old Man and the Sea",
-    isbn: "9780684832502",
-    photoUrl: "https://example.com/photo11.jpg",
-    price: 10.99,
-    description: "The struggle of an old fisherman against a giant fish.",
-    emotions: ["Inspiration", "Sadness"]
-  },
-  {
-    title: "A Wrinkle in Time",
-    isbn: "9780316353005",
-    photoUrl: "https://example.com/photo12.jpg",
-    price: 8.99,
-    description: "A science fantasy story about a girl's journey through space and time.",
-    emotions: ["Curiosity", "Escapism"]
-  },
-  {
-    title: "The Catcher in the Rye",
-    isbn: "9780316769488",
-    photoUrl: "https://example.com/photo13.jpg",
-    price: 14.99,
-    description: "A story about teenage angst and alienation.",
-    emotions: ["Sadness", "Nostalgia"]
-  },
-  {
-    title: "The Hitchhiker's Guide to the Galaxy",
-    isbn: "9780345391803",
-    photoUrl: "https://example.com/photo14.jpg",
+    isbn: "9780375842207",
     price: 12.99,
-    description: "A comedic science fiction adventure through space.",
-    emotions: ["Happiness", "Curiosity"]
-  },
-  {
-    title: "The Night Circus",
-    isbn: "9780385534643",
-    photoUrl: "https://example.com/photo15.jpg",
-    price: 20.99,
-    description: "A magical competition between two young illusionists.",
-    emotions: ["Escapism", "Happiness"]
-  },
-  {
-    title: "Fahrenheit 451",
-    isbn: "9781451673319",
-    photoUrl: "https://example.com/photo16.jpg",
-    price: 13.99,
-    description: "A dystopian novel where books are banned.",
-    emotions: ["Curiosity", "Escapism"]
-  },
-  {
-    title: "The Curious Incident of the Dog in the Night-Time",
-    isbn: "9781400032716",
-    photoUrl: "https://example.com/photo17.jpg",
-    price: 14.99,
-    description: "A unique perspective of a young boy with autism solving a mystery.",
-    emotions: ["Curiosity", "Inspiration"]
-  },
-  {
-    title: "Where the Crawdads Sing",
-    isbn: "9780735219090",
-    photoUrl: "https://example.com/photo18.jpg",
-    price: 10.99,
-    description: "A story of resilience and survival in the marshes of North Carolina.",
-    emotions: ["Inspiration", "Sadness"]
-  },
-  {
-    title: "The Secret Garden",
-    isbn: "9780689843200",
-    photoUrl: "https://example.com/photo19.jpg",
-    price: 15.99,
-    description: "A story about healing and the power of nature.",
-    emotions: ["Happiness", "Nostalgia"]
+    description: "A story narrated by Death during World War II.",
+    emotions: ["Nostalgia", "Sadness"]
   },
   {
     title: "Life of Pi",
     isbn: "9780156027328",
-    photoUrl: "https://example.com/photo20.jpg",
+    price: 15.99,
+    description: "A young man's survival at sea with a Bengal tiger.",
+    emotions: ["Escapism", "Inspiration"]
+  },
+  {
+    title: "The Night Circus",
+    isbn: "9780385534643",
+    price: 16.99,
+    description: "A magical competition between two young illusionists.",
+    emotions: ["Curiosity", "Happiness"]
+  },
+  {
+    title: "To Kill a Mockingbird",
+    isbn: "9780061120084",
+    price: 13.99,
+    description: "A young girl's perspective on racial injustice in the Deep South.",
+    emotions: ["Nostalgia", "Sadness"]
+  },
+  {
+    title: "The Secret Garden",
+    isbn: "9780143125378",
+    price: 8.99,
+    description: "A story of a girl discovering a hidden, magical garden.",
+    emotions: ["Escapism", "Happiness"]
+  },
+  {
+    title: "Harry Potter and the Sorcerer's Stone",
+    isbn: "9780590353427",
+    price: 10.99,
+    description: "A boy discovers he is a wizard and attends a magical school.",
+    emotions: ["Escapism", "Happiness"]
+  },
+  {
+    title: "The Little Prince",
+    isbn: "9780156012195",
+    price: 9.99,
+    description: "A story about a young prince visiting various planets.",
+    emotions: ["Curiosity", "Nostalgia"]
+  },
+  {
+    title: "Eleanor Oliphant Is Completely Fine",
+    isbn: "9780735220683",
+    price: 14.99,
+    description: "A quirky woman learns to open up and embrace life.",
+    emotions: ["Happiness", "Sadness"]
+  },
+  {
+    title: "The Catcher in the Rye",
+    isbn: "9780316769488",
+    price: 13.99,
+    description: "A teenager's journey through alienation and loneliness.",
+    emotions: ["Sadness", "Nostalgia"]
+  },
+  {
+    title: "Anne of Green Gables",
+    isbn: "9780553213133",
+    price: 7.99,
+    description: "The adventures of a spirited orphan girl in a new home.",
+    emotions: ["Happiness", "Nostalgia"]
+  },
+  {
+    title: "The Fault in Our Stars",
+    isbn: "9780525478812",
     price: 12.99,
-    description: "A boy's survival story on a lifeboat with a Bengal tiger.",
-    emotions: ["Inspiration", "Escapism"]
+    description: "Two teenagers with cancer find love and meaning.",
+    emotions: ["Happiness", "Sadness"]
+  },
+  {
+    title: "The Giver",
+    isbn: "9780440237686",
+    price: 9.99,
+    description: "A boy discovers the dark secrets of his seemingly perfect society.",
+    emotions: ["Curiosity", "Sadness"]
+  },
+  {
+    title: "The Glass Castle",
+    isbn: "9780743247542",
+    price: 16.99,
+    description: "A memoir of resilience and the complexity of family.",
+    emotions: ["Inspiration", "Nostalgia"]
+  },
+  {
+    title: "Where the Crawdads Sing",
+    isbn: "9780735219114",
+    price: 15.99,
+    description: "A young girl's connection with nature leads to her survival.",
+    emotions: ["Escapism", "Nostalgia"]
+  },
+  {
+    title: "The Time Traveler's Wife",
+    isbn: "9780812971068",
+    price: 14.99,
+    description: "A love story that transcends time.",
+    emotions: ["Happiness", "Nostalgia"]
+  },
+  {
+    title: "Good Omens",
+    isbn: "9780060853984",
+    price: 12.99,
+    description: "A comedic tale about an angel and a demon teaming up to prevent Armageddon.",
+    emotions: ["Curiosity", "Happiness"]
   }
 ]);
 
+
 ```
+
+## Principios REST
+
+Recuerda tener en cuenta los principios REST API. Para este ejercicio, lo más importante es establecer una respuesta JSON consistente y que ofrezca información del resultado de la operación
+
+<img src="https://oscarm.tinytake.com/media/16b2dcb?filename=1727023126775_TinyTake22-09-2024-06-36-48_638626198275746876_638626199262544408.png&sub_type=thumbnail_preview&type=attachment&width=798&height=333" title="Powered by TinyTake Screen Capture"/><br>
 
 ## Iteración 1: On
 
@@ -232,6 +219,21 @@ Implementa un endpoint para poder añadir un libro nuevo
 
 Usa _express-validator_ para validar los datos que recibe la API.
 Usa adecuadamente también la estructura de control try...catch para capturar cualquier error de validación de los datos contra el _Schema_ de la base de datos
+
+## Iteración 5
+
+Nuestra base de datos no tiene una imagen para la poder adjuntarlo con la respuesta.
+Sin embargo, si sabemos que Google API Books ofrece una API pública con información libros dado su ISBN.
+
+`GET https://www.googleapis.com/books/v1/volumes?q=isbn:9780061122415`
+
+En el ejemplo de la petición anterior nos va a dar información sobre el libro 'The Alchemist'. Fíjate que hay un campo con una URL pública donde se muestra la portada del libro.
+
+Modifica el endpoint `GET /api/books/recommendations/:emotion/random` para que ahora adjunte la imagen de portada del libro consultando la API de Google Books. 
+
+<img src="https://oscarm.tinytake.com/media/16b2dcd?filename=1727023388082_TinyTake22-09-2024-06-43-06_638626201876377564.png&sub_type=thumbnail_preview&type=attachment&width=277&height=280" title="Powered by TinyTake Screen Capture"/><br>
+
+
 
 
 
