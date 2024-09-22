@@ -1,10 +1,12 @@
 # Emotional Shelf
 
-La empresa _Emotional Sheld_ (estantería emocional) es una empresa de venta de libros. Tiene un amplio catálogo de libros como cualquier otra empresa. El valor añadido de esta empresa es que son especialistas en recomendar libros en función del estado anímico del lector
+<img width="200" src="https://oscarm.tinytake.com/media/16b2e3d?filename=1727036652460_TinyTake22-09-2024-10-24-09_638626334513732453.png&sub_type=thumbnail_preview&type=attachment&width=619&height=602" title="Powered by TinyTake Screen Capture"/><br>
+
+La empresa _Emotional Shelf_ (estantería emocional) es una empresa de venta de libros. Tiene un amplio catálogo de libros como cualquier otra empresa parecida del sector. El valor añadido de esta empresa es que son especialistas en recomendar libros en función del estado anímico del lector
 
 ## La emociones
 
-Según diversos estudios llevados a cabo por _Emotional Shel_ , las principales emociones que llevan a leer a las personas son
+Según diversos estudios llevados a cabo por _Emotional Shel_ , las principales emociones que llevan a leer a las personas son:
 
 - Inspiration
 - Curiostity
@@ -17,9 +19,12 @@ Todo su catálogo de libros se basa en relacionar libros con estas emociones par
 
 ## Setup Inicial
 
-Ejecuta el siguiente código en un cliente de MongoDB para crear una base de datos de nombre "emotional-shelf" e insertar los 20 primeros libros.
+Ejecuta el siguiente código en un cliente de MongoDB (por ejemplo el plugin de MongoDB de Visual Studio) para crear una base de datos de nombre "emotional-shelf" e insertar los 20 primeros libros.
 
 ```
+
+use('emotional-shelf');
+
 db.books.insertMany([
   {
     title: "The Alchemist",
@@ -168,11 +173,11 @@ db.books.insertMany([
 
 ## Principios REST
 
-Recuerda tener en cuenta los principios REST API. Para este ejercicio, lo más importante es establecer una respuesta JSON consistente y que ofrezca información del resultado de la operación
+Recuerda tener en cuenta los principios REST API. Es  importante es establecer una respuesta JSON consistente y que ofrezca información del resultado de la operación
 
 <img src="https://oscarm.tinytake.com/media/16b2dcb?filename=1727023126775_TinyTake22-09-2024-06-36-48_638626198275746876_638626199262544408.png&sub_type=thumbnail_preview&type=attachment&width=798&height=333" title="Powered by TinyTake Screen Capture"/><br>
 
-## Iteración 1: On
+## Iteración 1: Obtener libros
 
 Crea una estructura suficiente Express/NodeJS para crear un endpont que sea devuelve todos los libros de la base de datos en formato JSON.
 
@@ -184,9 +189,13 @@ Sigue el modelo modelo-vista-controlador (MVC). Recuerda que debes crear
 - Las rutas en la carpeta **routes**
 - Todas las rutas deben ir prefijadas con el prefijo '/api'
 
+El ruta del primer endpoint es:
+
 `GET /api/books` 
 
-## Iteración 2
+- Debe devolver los 20 primeros libros de la base de datos en formato JSON.
+
+## Iteración 2: Obtener los libros dada una emoción o sentimiento
 
 La funcionalidad estrella de la API es recomendar libros en función de la emoción que lleva a leerlos. Implemetna el siguiente _endpoint_ que dada una emoción, devuelve los 20 libros clasificados con dicha emoción
 
@@ -206,7 +215,7 @@ Crea un _endpoint_ que dada una emoción, devuelva un libro de forma aleatória 
 `GET /api/books/recommendations/:emotion/random`
 
 1. La API debe devolver un JSON con 1 libro aleatório clasificado con la emoción ':emotion'
-2. La API debe devolver un error en el caso que la emoción suministrada no sea ninguna de las que maneja la REST API
+2. La API debe devolver un error en el caso que la emoción suministrada no sea ninguna de las que maneja la REST API 
 
 ## Iteración 4
 
