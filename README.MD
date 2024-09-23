@@ -25,6 +25,8 @@ Ejecuta el siguiente código en un cliente de MongoDB (por ejemplo el plugin de 
 
 use('emotional-shelf');
 
+db.createCollection('books');
+
 db.books.insertMany([
   {
     title: "The Alchemist",
