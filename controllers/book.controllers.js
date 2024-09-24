@@ -22,7 +22,7 @@ exports.getBooksByEmotion = async (req,res) => {
         });
     }
 try {
-    const books = await Book.find({emotions: emotion});
+    const books = await Book.find({emotions: emotion}).limit(20);
     return res.status(200).json({
         message: `Query by the emotion: ${emotion} executed successfully`,
         results: books
