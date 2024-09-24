@@ -2,8 +2,7 @@
   "dependencies": {
     "dotenv": "^16.4.5",
     "express": "^4.21.0",
-    "mongoose": "^8.6.3",
-    "nodemon": "^3.1.7"
+    "mongoose": "^8.6.3"
   },
   "name": "emotional-shelf",
   "description": "<img width=\"200\" src=\"https://oscarm.tinytake.com/media/16b2e3d?filename=1727036652460_TinyTake22-09-2024-10-24-09_638626334513732453.png&sub_type=thumbnail_preview&type=attachment&width=619&height=602\" title=\"Powered by TinyTake Screen Capture\"/><br>",
@@ -22,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/VanyaMark/emotional-shelf/issues"
   },
-  "homepage": "https://github.com/VanyaMark/emotional-shelf#readme"
+  "homepage": "https://github.com/VanyaMark/emotional-shelf#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
 }
