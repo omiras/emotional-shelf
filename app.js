@@ -7,6 +7,9 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 dotenv.config();
 
+const bookRoutes = require('./routes/book.routes');
+app.use('/api', bookRoutes);
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, (req, res) => {
@@ -16,8 +19,7 @@ app.listen(PORT, (req, res) => {
 
 
 
-// const bookRoutes = require('./routes/book.routes');
-// app.use('/api', bookRoutes);
+
 
 
 
