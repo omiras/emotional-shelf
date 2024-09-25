@@ -181,7 +181,7 @@ Recuerda tener en cuenta los principios REST API. Es  importante es establecer u
 
 ## Iteración 1: Obtener libros
 
-Crea una estructura suficiente Express/NodeJS para crear un endpont que sea devuelve todos los libros de la base de datos en formato JSON.
+Crea una estructura suficiente Express/NodeJS para crear un endpont que sea devuelve libros de la base de datos en formato JSON.
 
 Sigue el modelo modelo-vista-controlador (MVC). Recuerda que debes crear
 
