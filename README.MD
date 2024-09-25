@@ -240,7 +240,8 @@ Sin embargo, si sabemos que Google API Books ofrece una API pública con informa
 
 En el ejemplo de la petición anterior nos va a dar información sobre el libro 'The Alchemist'. Fíjate que hay un campo con una URL pública donde se muestra la portada del libro.
 
-Modifica el endpoint `GET /api/books/recommendations/:emotion/random` para que ahora adjunte la imagen de portada del libro consultando la API de Google Books. 
+Modifica el endpoint:  
+`GET /api/books/recommendations/:emotion/random` para que ahora adjunte la imagen de portada del libro consultando la API de Google Books. 
 
 <img src="https://oscarm.tinytake.com/media/16b2dcd?filename=1727023388082_TinyTake22-09-2024-06-43-06_638626201876377564.png&sub_type=thumbnail_preview&type=attachment&width=277&height=280" title="Powered by TinyTake Screen Capture"/><br>
 
