@@ -205,6 +205,8 @@ La funcionalidad estrella de la API es recomendar libros en función de la emoci
 
 1. La API debe devolver un JSON con 20 libros clasificados con la emoción ':emotion'
 2. La API debe devolver un error en el caso que la emoción suministrada no sea ninguna de las que maneja la REST API
+  2.1 Es que si no encuentra ningún libro con la emoción suministrada devuelve un 404 /api/books/recommendations/joy. Si fuera más restrictivos, si la emoción no es ni Sadness, ni Happiness, etc, devolveríamos un 400 (Bad Request)
+  2.2 Si se sumnistra un valor inválido (un número, una palabra que contiene número, etc); en tal caso el valor más adecuado es el 400 (Bad Request)
 
 ## Iteración 2.5
 
