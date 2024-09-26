@@ -1,8 +1,12 @@
 const express = require('express');
-const { getBooks, getRecommendationsByEmotion } = require('../controllers/book.controllers');
+const { getBooks, getRecommendationsByEmotion, getRandomRecommendationByEmotion } = require('../controllers/book.controllers');
+const { validateEmotion } = require('./book.validations');
 const router = express.Router();
 
+
 router.get('/books', getBooks);
-router.get('/books/recommendations/:emotion', getRecommendationsByEmotion)
+// TODO: Iteración 2.5
+router.get('/books/recommendations/:emotion', validateEmotion, getRecommendationsByEmotion)
+router.get('/books/recommendations/:emotion/random', getRandomRecommendationByEmotion)
 
 module.exports = router;
