@@ -55,7 +55,7 @@ exports.getRandomRecommendationByEmotion = async (req, res) => {
 
     if (!errors.isEmpty()) {
       return res.status(400).json({
-        message: `Error when trying to find books with emotion ${emotion}`,
+        message: `Error when trying to find a random book with emotion ${emotion}`,
         errors: errors.array(),
       });
     }
