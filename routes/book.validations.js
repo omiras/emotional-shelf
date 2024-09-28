@@ -4,10 +4,10 @@ const allowedEmotions = ['Inspiration', 'Curiosity', 'Escapism', 'Nostalgia', 'H
 
 exports.validateEmotion = [
     param('emotion')
-        .customSanitizer((value) => {
-            // Normalize the input here
-            return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
-        })
+    .customSanitizer((value) => {
+        // Normalize the input here
+        return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
+    })
         .isIn(allowedEmotions)
         .withMessage('Invalid emotion')
 ];

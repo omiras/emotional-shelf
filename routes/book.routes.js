@@ -6,6 +6,7 @@ const router = express.Router();
 
 router.get('/books', getBooks);
 router.get('/books/recommendations/:emotion', validateEmotion,getBooksByEmotion);
-router.get('/books/recommendations/:emotion/random', validateEmotion, getRandomRecommendationByEmotion)
+router.get('/books/recommendations/:emotion/random', validateEmotion, getRandomRecommendationByEmotion);
+// router.post('/books', adminControllers.postNewApartment);
 
 module.exports = router;
