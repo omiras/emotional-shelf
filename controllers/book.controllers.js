@@ -46,6 +46,15 @@ exports.getRandomRecommendationByEmotion = async (req, res) => {
     // 1. Vamos a extraer la :Emotion de la parte dinámica de la ruta
     const { emotion } = req.params;
 
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        return res.status(400).json({
+            message: `Error when trying to find books with emotion ${emotion}`,
+            errors: errors.array()
+        })
+    }
+
     // 2. Vamos a recuperar todos los libros que cumplan con :emotion
     const books = await Book.find({ emotions: { $in: emotion } });
 
