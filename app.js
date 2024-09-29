@@ -3,6 +3,9 @@ const express = require('express');
 
 const app = express();
 
+// Add this to parse JSON bodies
+app.use(express.json()); 
+
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 dotenv.config();

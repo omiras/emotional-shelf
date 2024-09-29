@@ -23,8 +23,15 @@ const bookSchema = new Schema({
     emotions: {
         type: [String],
         required: true,
-        // TODO: Cómo aún no tengo que crear libros voy a dejar por el momento otras validaciones y consideraciones por tal de acabar la iteración 1
-    }
+        enum: [
+            'Inspiration',
+            'Curiosity',
+            'Escapism',
+            'Nostalgia',
+            'Happiness',
+            'Sadness',
+        ],
+    },
 })
 
 const Book = model('book', bookSchema);

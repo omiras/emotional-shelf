@@ -225,7 +225,7 @@ Implementa un endpoint para poder añadir un libro nuevo
 
 `POST /api/books/`
 
-1. La API deve devolver un JSON con el identificador (Object ID) del libro que acaba de insertar en la base de datos
+1. La API debe devolver un JSON con el identificador (Object ID) del libro que acaba de insertar en la base de datos
 2. La API debe devolver un error si algunos de los campos del POST no és un valor admitido o cualquier otro valor demasiado grande, pequeño o peligroso que pueda comprometer la creación del libro.
 
 Usa _express-validator_ para validar los datos que recibe la API.
