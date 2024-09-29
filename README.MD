@@ -225,6 +225,18 @@ Implementa un endpoint para poder añadir un libro nuevo
 
 `POST /api/books/`
 
+Un ejemplo de JSON correcta para insertar con Thunder Client u otro cliente sería:
+
+```
+{
+  "title": "Alice's Adventures in Wonderland",
+  "isbn": "9781503222687",
+  "price": 9.99,
+  "description": "A whimsical tale of a young girl who falls into a fantastical world filled with peculiar characters and strange adventures.",
+  "emotions": ["Curiosity", "Escapism", "Nostalgia"]
+}
+```
+
 1. La API deve devolver un JSON con el identificador (Object ID) del libro que acaba de insertar en la base de datos
 2. La API debe devolver un error si algunos de los campos del POST no és un valor admitido o cualquier otro valor demasiado grande, pequeño o peligroso que pueda comprometer la creación del libro.
 
