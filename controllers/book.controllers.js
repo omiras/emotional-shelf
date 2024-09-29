@@ -69,5 +69,36 @@ exports.getRandomRecommendationByEmotion = async (req, res) => {
 }
 
 exports.postBook = async (req, res) => {
-    // TODO:
+
+    // Si ha fallado alguna validación de express-validator, no hacer nada contra la base de datos
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        return res.status(422).json({
+            message: "ERROR: Fields contain some invalid data",
+            errors: errors.array()
+        })
+    }
+
+
+    const { title, isbn, price, description, emotions } = req.body;
+    try {
+        const insertedBook = await Book.create({
+            title,
+            isbn,
+            price,
+            description,
+            emotions
+        });
+
+        res.status(201).json({
+            message: "Book created successfully",
+            bookId: insertedBook._id
+        })
+    }
+    catch (error) {
+        res.status(500).json({
+            message: `Error: ${error.message}`
+        })
+    }
 }

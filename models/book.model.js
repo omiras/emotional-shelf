@@ -10,6 +10,7 @@ const bookSchema = new Schema({
         type: String,
         required: true,
         match: /^[0-9]{13}$/,
+        unique: true
     },
     price: {
         type: Number,
@@ -23,8 +24,15 @@ const bookSchema = new Schema({
     emotions: {
         type: [String],
         required: true,
-        // TODO: Cómo aún no tengo que crear libros voy a dejar por el momento otras validaciones y consideraciones por tal de acabar la iteración 1
+        enum: ['Inspiration', 'Curiosity', 'Escapism', 'Nostalgia', 'Happiness', 'Sadness'],
+        validate: {
+            validator: function (value) {
+                return value.length > 0;
+            },
+            message: 'There must be at least one emotion in the list.'
+        }
     }
+
 
 });
 
