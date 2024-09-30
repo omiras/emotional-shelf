@@ -246,6 +246,9 @@ Usa adecuadamente también la estructura de control try...catch para capturar cu
 Ejemplo de respuesta correcta:
 ![](https://oscarm.tinytake.com/media/16ba53f?filename=1727715667497_TinyTake30-09-2024-07-01-04_638633124668268112.png&sub_type=thumbnail_preview&type=attachment&width=799&height=405)
 
+Ejemplo de error de express-validator al enviar un ISBN inválido:
+![](https://oscarm.tinytake.com/media/16ba543?filename=1727715829916_TinyTake30-09-2024-07-03-19_638633126291193135.png&sub_type=thumbnail_preview&type=attachment&width=1200&height=713)
+
 ## Iteración 5
 
 Nuestra base de datos no tiene una imagen para la poder adjuntarlo con la respuesta.
