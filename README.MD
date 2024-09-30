@@ -243,6 +243,9 @@ Un ejemplo de JSON correcta para insertar con Thunder Client u otro cliente ser�
 Usa _express-validator_ para validar los datos que recibe la API.
 Usa adecuadamente también la estructura de control try...catch para capturar cualquier error de validación de los datos contra el _Schema_ de la base de datos
 
+Ejemplo de respuesta correcta:
+![](https://oscarm.tinytake.com/media/16ba53f?filename=1727715667497_TinyTake30-09-2024-07-01-04_638633124668268112.png&sub_type=thumbnail_preview&type=attachment&width=799&height=405)
+
 ## Iteración 5
 
 Nuestra base de datos no tiene una imagen para la poder adjuntarlo con la respuesta.
