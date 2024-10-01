@@ -65,9 +65,13 @@ exports.getRandomRecommendationByEmotion = async (req, res) => {
 
     const googleBook = await response.json();
 
-
-    const imageURL = googleBook.items[0].volumeInfo.imageLinks.thumbnail;
-
+    // Iteración 5: Hay algunas imagenes que no tienen foto. Es algo que podemos controlar con un try catch, aunque habría otras alternativas
+    let imageURL;
+    try {
+        imageURL = googleBook.items[0].volumeInfo.imageLinks.thumbnail;
+    } catch (error) {
+        imageURL = "https://placehold.co/600x400/png";
+    }
 
     // 3. DEvolver la respuesta que esta vez va a ser un único libro
     res.status(200).json({
