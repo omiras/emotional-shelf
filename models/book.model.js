@@ -31,8 +31,7 @@ const bookSchema = new Schema({
             },
             message: 'There must be at least one emotion in the list.'
         }
-    }
-
+    },
 
 });
 

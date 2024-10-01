@@ -25,9 +25,6 @@ exports.getRecommendationsByEmotion = async (req, res) => {
         })
     }
 
-    // Seria interesante capitalizar las palabras siempre por si el cliente nos envia una petición tipo /api/books/recommendations/sadness , con s en minúsuclas . Incluso sería mejor utilizar una expresión regular en $in para que no tenga en cuenta ni mayúsculas ni minúsculas
-
-    // const capitalizedEmotion = emotion.charAt(0).toUpperCase() + emotion.slice(1);
 
     // 2. Usar el :emotion para hacer una búsqueda en el modelo de los 20 primeros libros que incluyen la emoción ':emotion'
     const books = await Book.find({ emotions: { $in: [emotion] } }).limit(20);
@@ -55,16 +52,30 @@ exports.getRandomRecommendationByEmotion = async (req, res) => {
         })
     }
 
+
+
     // 2. Vamos a recuperar todos los libros que cumplan con :emotion
     const books = await Book.find({ emotions: { $in: emotion } });
 
     // 2.5. Calcular un elemento aleatório entre todos los libros que incluyen la emoción :emotion
     const randomBook = books[Math.floor(Math.random() * books.length)];
 
+    // Iteración 5: Necesitamos hacer una petición a la API una vez 
+    const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${randomBook.isbn}`);
+
+    const googleBook = await response.json();
+
+
+    const imageURL = googleBook.items[0].volumeInfo.imageLinks.thumbnail;
+
+
     // 3. DEvolver la respuesta que esta vez va a ser un único libro
     res.status(200).json({
         message: "Query executed successfully",
-        results: [randomBook]
+        results: [{
+            ...randomBook.toObject(),
+            imageURL
+        }]
     })
 }
 
