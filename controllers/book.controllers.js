@@ -21,7 +21,7 @@ exports.getRecommendationsByEmotion = async (req, res) => {
     if (!errors.isEmpty()) {
         return res.status(400).json({
             message: `Error when trying to find books with emotion ${emotion}`,
-            errors: errors.array()
+            errors: errors.array({onlyFirstError: true})
         })
     }
 
@@ -60,5 +60,33 @@ exports.getRandomRecommendationByEmotion = async (req, res) => {
 }
 
 exports.postBook = async (req, res) => {
-    // TODO:
+    // TODO: Dividr el problema en pequeñas victorias: tan solo centrarse en crear el libro en la base de datos usando el modelo
+    console.log("🚀 ~ file: book.controllers.js:65 ~ exports.postBook= ", req.body);
+
+    // Aqui validar los campos del POST que ha informado express-validator
+
+    const { title, isbn, price, description, emotions } = req.body
+    try {
+
+        // Iteración 4: Haced bastante console.log de los datos porque os llevaréis sorpresas. Tened a la vista el TERMINAL desplegado si os sucede cualquier error 
+        const createdBook = await Book.create({
+            title,
+            isbn,
+            price,
+            description,
+            emotions
+        });
+
+
+        // devolvemos un 201 porque es el código HTTP más adecuado para indicar que el servidor ha creado un nuevo recurso (en una base datos, en un fichero, etc.)
+        res.status(201).json({
+            "message": "Book created successfully",
+            "bookId": createdBook._id
+        });
+    } catch (error) {
+        // La petición que me ha hecho es incorrecta porque ha fallado al crear el libro 
+        res.status(400).json({
+            message: `Could not craate the book. Validation failed ${error.message}`,
+        })
+    }
 }

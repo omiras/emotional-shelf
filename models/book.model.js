@@ -18,12 +18,13 @@ const bookSchema = new Schema({
     description: {
         type: String,
         required: true,
-        maxLength: 4000 // Amazon Kingle Direct Publishing
+        maxLength: 4000 // Amazon Kindle Direct Publishing
     },
     emotions: {
         type: [String],
         required: true,
-        // TODO: Cómo aún no tengo que crear libros voy a dejar por el momento otras validaciones y consideraciones por tal de acabar la iteración 1
+        // Iteración 4: Seria interesante que al crear un libro tan solo se puedieran isnertar en la base de datos libros que contengan la emoción Sadness, Happiness, etc...
+
     }
 
 });
