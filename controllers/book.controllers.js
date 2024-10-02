@@ -1,10 +1,11 @@
 const Book = require('../models/book.model');
 const { validationResult } = require('express-validator');
 const { getGoogleBookByISBN } = require('../services/googleBook.services');
+const { getBooks } = require('../services/books.services');
 
 // otra forma de exportar varios recursos, ¿cuál os gusta más?
 exports.getBooks = async (req, res) => {
-    const books = await Book.find().limit(20);
+    const books = await getBooks(); // Sin emoción
 
     return res.status(200).json({
         message: "Query executed successfully",
@@ -28,7 +29,7 @@ exports.getRecommendationsByEmotion = async (req, res) => {
 
 
     // 2. Usar el :emotion para hacer una búsqueda en el modelo de los 20 primeros libros que incluyen la emoción ':emotion'
-    const books = await Book.find({ emotions: { $in: [emotion] } }).limit(20);
+    const books = await getBooks(emotion); // Con emoción
 
     // 3. Responder al cliente con un JSON con una respuesta similar a la del controlador getBooks (en cuanto a estructura de la respuesta: un objeto con las propiedad 'message' y 'results')
     res.status(200).json({
@@ -56,7 +57,7 @@ exports.getRandomRecommendationByEmotion = async (req, res) => {
 
 
     // 2. Vamos a recuperar todos los libros que cumplan con :emotion
-    const books = await Book.find({ emotions: { $in: emotion } });
+    const books = await getBooks(emotion); // Con emoción
 
     // 2.5. Calcular un elemento aleatório entre todos los libros que incluyen la emoción :emotion
     const randomBook = books[Math.floor(Math.random() * books.length)];
