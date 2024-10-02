@@ -50,7 +50,7 @@ exports.getBooksByEmotion = async (req, res) => {
       results: books,
     });
   } catch (error) {
-    res.status(500).json({ error: "Error fetching books" }); // Handle any errors
+    res.status(400).json({ error: "Error fetching books" }); // Handle any errors
   }
 };
 
@@ -75,7 +75,7 @@ exports.getRandomRecommendationByEmotion = async (req, res) => {
       results: randomBook[0],
     });
   } catch (error) {
-    res.status(500).json({ error: "Error fetching books" }); // Handle any errors
+    res.status(400).json({ error: "Error fetching books" }); // Handle any errors
   }
 };
 
@@ -95,9 +95,9 @@ exports.postNewBook = async (req, res) => {
 
     // Return the Object ID of the newly created book
 
-    return res.status(200).json({ message: `New book "${newBook.title}" created correctly.`,bookId: newBook._id });
+    return res.status(201).json({ message: `New book "${newBook.title}" created correctly.`, bookId: newBook._id });
   } catch (error) {
     console.error("Error adding book:", error);
-    res.status(500).json({ message: "Error adding the book to the database" });
+    res.status(400).json({ message: `Error adding the book to the database. Error: ${error.message}` });
   }
 };
