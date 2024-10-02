@@ -1,5 +1,6 @@
 const Book = require('../models/book.model');
 const { validationResult } = require('express-validator');
+const { getGoogleBookByISBN } = require('../services/googleBook.services');
 
 // otra forma de exportar varios recursos, ¿cuál os gusta más?
 exports.getBooks = async (req, res) => {
@@ -61,24 +62,19 @@ exports.getRandomRecommendationByEmotion = async (req, res) => {
     const randomBook = books[Math.floor(Math.random() * books.length)];
 
     // Iteración 5: Necesitamos hacer una petición a la API una vez 
-    const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${randomBook.isbn}`);
-
-    const googleBook = await response.json();
-
-    // Iteración 5: Hay algunas imagenes que no tienen foto. Es algo que podemos controlar con un try catch, aunque habría otras alternativas
-    let imageURL;
-    try {
-        imageURL = googleBook.items[0].volumeInfo.imageLinks.thumbnail;
-    } catch (error) {
-        imageURL = "https://placehold.co/600x400/png";
-    }
+    const imageURL = await getGoogleBookByISBN(randomBook.isbn);
 
     // 3. DEvolver la respuesta que esta vez va a ser un único libro
     res.status(200).json({
         message: "Query executed successfully",
         results: [{
-            ...randomBook.toObject(),
-            imageURL
+            title: randomBook.title,
+            description: randomBook.description,
+            price: randomBook.price,
+            isbn: randomBook.price,
+            _id: randomBook._id,
+            emotions: randomBook.emotions,
+            imageURL: imageURL
         }]
     })
 }
