@@ -64,6 +64,14 @@ exports.postBook = async (req, res) => {
     console.log("🚀 ~ file: book.controllers.js:65 ~ exports.postBook= ", req.body);
 
     // Aqui validar los campos del POST que ha informado express-validator
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        return res.status(400).json({
+            message: `Error when trying to create a book`,
+            errors: errors.array({onlyFirstError: true})
+        })
+    }
 
     const { title, isbn, price, description, emotions } = req.body
     try {
