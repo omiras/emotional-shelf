@@ -21,7 +21,7 @@ exports.getRecommendationsByEmotion = async (req, res) => {
     if (!errors.isEmpty()) {
         return res.status(400).json({
             message: `Error when trying to find books with emotion ${emotion}`,
-            errors: errors.array({onlyFirstError: true})
+            errors: errors.array({ onlyFirstError: true })
         })
     }
 
@@ -52,10 +52,40 @@ exports.getRandomRecommendationByEmotion = async (req, res) => {
     // 2.5. Calcular un elemento aleatório entre todos los libros que incluyen la emoción :emotion
     const randomBook = books[Math.floor(Math.random() * books.length)];
 
+    // Iteración 5: Necesitamos realizar una petición a la API De Google y obtener el libro relacionado con el ISBN y encontrar una propiedad en la respuesta de la API Google para obtener la imagen del libro. Luego, de alguna manera, hay adjuntar esta imagen en la respuesta al cliente. Quizás la forma más sencilla es crear un objeto de cero con todos los campos necesarios.
+    /**
+     * 
+  "message": "Query executed successfully",
+  "results": [
+    {
+      "title": "The Fault in Our Stars",
+      "description": "Two teenagers with cancer find love and meaning.",
+      "price": 12.99,
+      "isbn": 12.99,
+      "_id": "66faeca9ec0fb18c609eb4b1",
+      "emotions": [
+        "Happiness",
+        "Sadness"
+      ],
+      "imageURL": "http://books.google.com/books/content?id=Dc2LDQAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+    }
+  ]
+}
+     */
+
+    const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${randomBook.isbn}`);
+
+    console.log("🚀 ~ file: book.controllers.js:78 ~ randomBook.isbn:", randomBook.isbn)
+    const data = await response.json();
+    console.log("🚀 ~ file: book.controllers.js:79 ~ data:", data)
+
+    // Iteración 5: Extraer la foto de la propiedad correcta de la variable data
+
+
     // 3. DEvolver la respuesta que esta vez va a ser un único libro
     res.status(200).json({
         message: "Query executed successfully",
-        results: [randomBook]
+        results: [randomBook] // Iteración 5: ¿Cómo adunto la propiedad imageUrl a este libro?
     })
 }
 
@@ -69,7 +99,7 @@ exports.postBook = async (req, res) => {
     if (!errors.isEmpty()) {
         return res.status(400).json({
             message: `Error when trying to create a book`,
-            errors: errors.array({onlyFirstError: true})
+            errors: errors.array({ onlyFirstError: true })
         })
     }
 
