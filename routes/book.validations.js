@@ -1,4 +1,4 @@
-const { param, check } = require('express-validator');
+const { param, body } = require('express-validator');
 const { validEmotions } = require('../controllers/book.controllers');
 
 exports.validateEmotion = [
@@ -13,15 +13,13 @@ exports.validateEmotion = [
 
 // Validation middleware using express-validator
 exports.validateNewBook = [
-    check('title').not().isEmpty().withMessage('Title is required'),
-    check('isbn').isLength({ min: 13, max: 13 }).withMessage('ISBN should be between 13 characters'),
-    check('price').isFloat({ gt: 0 }).withMessage('Price should be a positive number'),
-    check('description').not().isEmpty().withMessage('Description is required').isLength({ max: 4000 }).withMessage('Description can be up to 4000 characters'),
-    check('emotions').isArray().withMessage('Emotions should be an array').custom(emotionsArray => {
-        const isValid = emotionsArray.every(emotion => validEmotions.includes(emotion));
-        if (!isValid) {
-            throw new Error('Emotions must be one of the following: ' + validEmotions.join(', '));
-        }
-        return true;
-    }),
+    body('title').
+        isLength({ max: 30 }).
+        withMessage('The title must be less than 30 characters'),
+    body('isbn').matches(/^[0-9]{13}$/).withMessage('ISBN should be between 13 characters'),
+    body('price').isCurrency({ require_symbol: false }).withMessage('The provided price is not valid').isFloat({ min: 0 }).withMessage('The price must be a positive number'),
+    body('description').not().isEmpty().withMessage('Description is required').isLength({ max: 4000 }).withMessage('Description can be up to 4000 characters'),
+    body('emotions').
+        isArray({ min: 1 }).withMessage('Book must include at least 1 emotion').isIn(validEmotions).withMessage('The provided emotion is not valid.')
 ]
+
