@@ -1,5 +1,7 @@
 const Book = require('../models/book.model');
 const { validationResult } = require('express-validator');
+const { getBooksByEmotion } = require('../services/book.services');
+
 
 // otra forma de exportar varios recursos, ¿cuál os gusta más?
 exports.getBooks = async (req, res) => {
@@ -30,7 +32,7 @@ exports.getRecommendationsByEmotion = async (req, res) => {
     // const capitalizedEmotion = emotion.charAt(0).toUpperCase() + emotion.slice(1);
 
     // 2. Usar el :emotion para hacer una búsqueda en el modelo de los 20 primeros libros que incluyen la emoción ':emotion'
-    const books = await Book.find({ emotions: { $in: [emotion] } }).limit(20);
+    const books = await getBooksByEmotion(emotion)
 
     // 3. Responder al cliente con un JSON con una respuesta similar a la del controlador getBooks (en cuanto a estructura de la respuesta: un objeto con las propiedad 'message' y 'results')
     res.status(200).json({
@@ -47,7 +49,7 @@ exports.getRandomRecommendationByEmotion = async (req, res) => {
     const { emotion } = req.params;
 
     // 2. Vamos a recuperar todos los libros que cumplan con :emotion
-    const books = await Book.find({ emotions: { $in: emotion } });
+    const books = await getBooksByEmotion(emotion);
 
     // 2.5. Calcular un elemento aleatório entre todos los libros que incluyen la emoción :emotion
     const randomBook = books[Math.floor(Math.random() * books.length)];
@@ -72,20 +74,36 @@ exports.getRandomRecommendationByEmotion = async (req, res) => {
   ]
 }
      */
+    let imageURL;
+    try {
+        const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${randomBook.isbn}`);
 
-    const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${randomBook.isbn}`);
-
-    console.log("🚀 ~ file: book.controllers.js:78 ~ randomBook.isbn:", randomBook.isbn)
-    const data = await response.json();
-    console.log("🚀 ~ file: book.controllers.js:79 ~ data:", data)
-
+        const data = await response.json();
+        if (data.totalItems == 0) {
+            // Significa que no está el libro en la base de datos de Google para ese ISBN. Vamos igualmente a rellenar la imageURL con una URL válida a un foto
+            imageURL = "https://placehold.co/600x400";
+        } else {
+            imageURL = data.items[0].volumeInfo.imageLinks.thumbnail;
+        }
+    } catch (error) {
+        return res.status(500).json({
+            message: `Something went wonng... ${error.message}`
+        })
+    }
     // Iteración 5: Extraer la foto de la propiedad correcta de la variable data
 
 
     // 3. DEvolver la respuesta que esta vez va a ser un único libro
     res.status(200).json({
         message: "Query executed successfully",
-        results: [randomBook] // Iteración 5: ¿Cómo adunto la propiedad imageUrl a este libro?
+        results: [{
+            title: randomBook.title,
+            isbn: randomBook.isbn,
+            description: randomBook.description,
+            price: randomBook.price,
+            emotions: randomBook.emotions,
+            imageURL: imageURL
+        }] // Iteración 5: ¿Cómo adunto la propiedad imageUrl a este libro?
     })
 }
 

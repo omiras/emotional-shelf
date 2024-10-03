@@ -1,6 +1,6 @@
 const { param, body } = require('express-validator');
+const { allowedEmotions } = require('../config/constants');
 
-const allowedEmotions = ['Inspiration', 'Curiosity', 'Escapism', 'Nostalgia', 'Happiness', 'Sadness'];
 
 exports.validateEmotion = [param('emotion').isIn(allowedEmotions).withMessage('Invalid emotion')];
 

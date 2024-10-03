@@ -1,4 +1,6 @@
 const { Schema, model } = require('mongoose');
+const { allowedEmotions } = require('../config/constants');
+
 
 const bookSchema = new Schema({
     title: {
@@ -24,7 +26,7 @@ const bookSchema = new Schema({
         type: [String],
         required: true,
         // Iteración 4: Seria interesante que al crear un libro tan solo se puedieran isnertar en la base de datos libros que contengan la emoción Sadness, Happiness, etc...esto lo conseguimos con un enum o un 'custom validator'
-        enum: ['Inspiration', 'Curiosity', 'Escapism', 'Nostalgia', 'Happiness', 'Sadness'],
+        enum: allowedEmotions,
         validate: {
             validator: function (emotions) { // cuando se intente crear el documento, 'emotions' va a valer el array de emociones que le pasamos en el POST
                 return emotions.length > 0
