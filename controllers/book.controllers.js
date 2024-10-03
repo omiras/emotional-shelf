@@ -70,9 +70,38 @@ exports.getRandomRecommendationByEmotion = async (req, res) => {
       { $match: { emotions: { $in: [emotion] } } }, // Match books where the emotions array contains the given emotion
       { $sample: { size: 1 } }, // Randomly select one book from the matched books
     ]);
-    return res.status(200).json({
+
+    console.log('random book: ', randomBook)
+     // Iteración 5: Necesitamos realizar una petición a la API De Google y obtener el libro relacionado con el ISBN y encontrar una propiedad en la respuesta de la API Google para obtener la imagen del libro. Luego, de alguna manera, hay adjuntar esta imagen en la respuesta al cliente. Quizás la forma más sencilla es crear un objeto de cero con todos los campos necesarios.
+    /**
+     * 
+  "message": "Query executed successfully",
+  "results": [
+    {
+      "title": "The Fault in Our Stars",
+      "description": "Two teenagers with cancer find love and meaning.",
+      "price": 12.99,
+      "isbn": 12.99,
+      "_id": "66faeca9ec0fb18c609eb4b1",
+      "emotions": [
+        "Happiness",
+        "Sadness"
+      ],
+      "imageURL": "http://books.google.com/books/content?id=Dc2LDQAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+    }
+  ]
+}
+     */
+    console.log('isbn: ', randomBook[0].isbn)
+
+    const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${randomBook[0].isbn}`);
+
+    const data = await response.json();
+    console.log('data: ', data)
+
+    res.status(200).json({
       message: `Random book by the emotion: ${emotion} retrieved successfully`,
-      results: randomBook[0],
+      results: randomBook[0], // Iteración 5: ¿Cómo adunto la propiedad imageUrl a este libro?
     });
   } catch (error) {
     res.status(400).json({ error: "Error fetching books" }); // Handle any errors
@@ -101,3 +130,6 @@ exports.postNewBook = async (req, res) => {
     res.status(400).json({ message: `Error adding the book to the database. Error: ${error.message}` });
   }
 };
+
+
+
