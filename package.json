@@ -4,7 +4,7 @@
   "description": "<img width=\"200\" src=\"https://oscarm.tinytake.com/media/16b2e3d?filename=1727036652460_TinyTake22-09-2024-10-24-09_638626334513732453.png&sub_type=thumbnail_preview&type=attachment&width=619&height=602\" title=\"Powered by TinyTake Screen Capture\"/><br>",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "nodemon app.js"
   },
   "repository": {
@@ -25,6 +25,7 @@
     "mongoose": "^8.6.3"
   },
   "devDependencies": {
+    "jest": "^29.7.0",
     "nodemon": "^3.1.7"
   }
 }
